@@ -1,21 +1,29 @@
+import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TextInput} from 'react-native';
+import {StartPage} from "./src/Pages/1StartPage";
 
 export default function App() {
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+      <View style={styles.container}>
+          {StartPage}
+          <Text>Press Me</Text>
+      </View>
   );
 }
+
+const testStyle = StyleSheet.create({
+  text: {
+    backgroundColor: 'white'
+  },
+});
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'lightyellow',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
 });
