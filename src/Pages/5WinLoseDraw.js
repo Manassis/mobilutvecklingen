@@ -1,13 +1,15 @@
 import React, { useState }from 'react';
 import {Button, Image, Text, View} from "react-native";
 
-export function WinLoseDraw() {
+export function WinLoseDraw (props) {
+    const [winner, setWinner] = useState('');
+
     return (
         <View>
-            <H2>MAKE MOVE</H2>
-            <View> 2-delat med bild import</View>
+            <Text style={styles.test}>{setWinner}=>{winner}</Text>
             <View>
-                <Button title={} onPress={}>Play again</Button>  <Button title={} onPress={}>Quit</Button>
+                <Button title={""} onPress={""}>Play again</Button>
+                <Button title={""} onPress={""}>Quit</Button>
             </View>
         </View>
     );
