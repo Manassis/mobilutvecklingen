@@ -6,7 +6,7 @@ export function WinLoseDraw (props) {
 
     return (
         <View>
-            <Text style={styles.test}>{setWinner}=>{winner}</Text>
+            <Text style={styles.test}>{winner}</Text>
             <View>
                 <Button title={""} onPress={""}>Play again</Button>
                 <Button title={""} onPress={""}>Quit</Button>
