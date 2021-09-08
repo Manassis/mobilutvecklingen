@@ -1,5 +1,5 @@
 import React, { useState }from 'react';
-import {Button, Image, Text, View} from "react-native";
+import {Button, Image, StyleSheet, Text, View} from "react-native";
 
 export function Button() {
     return (
@@ -8,3 +8,10 @@ export function Button() {
         </View>
     );
 }
+const styles = StyleSheet.create({
+    custombutton1: {
+        width: '50%',
+        height: '100%'
+    }
+
+});

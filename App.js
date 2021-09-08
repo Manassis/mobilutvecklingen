@@ -7,7 +7,7 @@ export default function App() {
 
     const [view, setView] = useState('start');
     const [token, setToken] = useState('');
-    const [move, setMove] = useState('');
+    const [move, setMove] = useState('Make Move');
     const [winner, setWinner] = useState('');
 
 
@@ -17,7 +17,7 @@ export default function App() {
     } else if (view === 'playerName') {
         display = <PlayerName setView={setView} token={token}/>;
     } else if (view === 'Opponents') {
-        display = <Opponents />;
+        display = <Opponents setView={setView} token={token}/>;
     } else if (view === 'MakeMove') {
         display = <MakeMove setMove={setMove} token={token}/>;
     } else if (view === 'WinLoseDraw') {
