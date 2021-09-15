@@ -20,41 +20,41 @@ export function Opponents(props) {
 
 
 
-    return <View style={styles.container2}>
-
-               <View>
-                  <Text>Opponents</Text>
-               </View>
-
-               <View>
-                   {games.map(game => {
-                      return <View key={game.id}>
-
-                        <Text>{game.playerName}</Text>
-
-                        <Button title={"Join"} onPress={ () => {
-                            fetch('http://localhost:8080/games/start', {
-                                headers: {
-                                    'token': props.token,
-                                },
-                            })
-                                .then(response => response.json())
-                                .then(response => {
-                                    setStartGames (response)
-                                    props.setView("MakeMove")
-                                });
-                        });
-
-                   }
-                            startGames.map(startGames => {
-                                return
-                                    <View key={startGames.id}>{MakeMove}</View>
-                        }
-                        }/>;
-               </View>
-               })}
-            </View>
- );
+ //    return <View style={styles.container2}>
+ //
+ //               <View>
+ //                  <Text>Opponents</Text>
+ //               </View>
+ //
+ //               <View>
+ //                   {games.map(game => {
+ //                      return <View key={game.id}>
+ //
+ //                        <Text>{game.playerName}</Text>
+ //
+ //                        <Button title={"Join"} onPress={ () => {
+ //                            fetch('http://localhost:8080/games/start', {
+ //                                headers: {
+ //                                    'token': props.token,
+ //                                },
+ //                            })
+ //                                .then(response => response.json())
+ //                                .then(response => {
+ //                                    setStartGames (response)
+ //                                    props.setView("MakeMove")
+ //                                });
+ //                        });
+ //
+ //                  }
+ //                            startGames.map(startGames => {
+ //                                return
+ //                                    <View key={startGames.id}>{MakeMove}</View>
+ //                      }
+ //                        }/>;
+ //               </View>
+ //               })}
+ //            </View>
+ // );
 }
 
 const styles = StyleSheet.create({
@@ -65,6 +65,14 @@ container2: {
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'lightyellow'
-}
+},
+
+    opText: {
+    paddingBottom: '50%'
+    },
+
+    plName: {
+    paddingBottom: '10%'
+    }
 
 });

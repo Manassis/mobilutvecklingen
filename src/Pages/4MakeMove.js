@@ -9,7 +9,13 @@ export function MakeMove(props) {
 
     return (
         <View style={styles.container}>
-            <Text>MAKE MOVE</Text>
+            <View style={styles.box}>
+                <Text style={styles.move}>MAKE MOVE</Text>
+            </View>
+            <View>
+                { pick }
+            </View>
+
 
             <View>
                 <View>
@@ -38,11 +44,31 @@ export function MakeMove(props) {
                     <Image style={styles.picture1} source={require('/Users/mislljud/mobilapp-uppgift/src/Pictures/Bag.png')}/>
                 </View>
 
+            {/*</View>*/}
+            <View style={styles.box}>
+                <View style={styles.pictureView}>
+                    <View>
+                        <Image style={styles.picture1} source={require('../Pictures/Rock.png')}/>
+                        <Button style={styles.picButton} title={"Choose"} onPress={() => makeMove("ROCK")} />
+                    </View>
+
+                    <View>
+                        <Image style={styles.picture1} source={require('../Pictures/Sciccor.png')}/>
+                        <Button title={"Choose"} onPress={() => makeMove("SCISSORS")} />
+                    </View>
+
+                    <View>
+                        <Image style={styles.picture1} source={require('../Pictures/Bag.png')}/>
+                        <Button title={"Choose"} onPress={() => makeMove("PAPER")} />
+                    </View>
+                </View>
+
             </View>
 
-            <Button title={props.text} onPress={props.onClick}/>
-            <Button title={props.text} onPress={props.onClick}/>
-            <Button title={props.text} onPress={props.onClick}/>
+            <View style={styles.box}>
+                <Button title={"Exit"} onPress={() => clearInterval(task.current)}/>
+            </View>
+
         </View>
 
     );
@@ -51,10 +77,40 @@ const styles = StyleSheet.create({
     container: {
         width: '100%',
         height: '100%',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
+        flexDirection: 'column',
+        backgroundColor: 'lightyellow'
+    },
 
+    pictureView: {
+        display: 'flex',
+        flexDirection: 'row',
+    },
+
+    picture1: {
+        marginRight: '5%',
+        marginLeft: '5%',
+        width: 100,
+        height: 100,
+        resizeMode: 'contain'
+    },
+
+    picButton: {
+        alignContent: 'center'
+    },
+
+    box: {
+        width: '100%',
+        paddingTop:'30%',
+        flex: 1,
+    },
+
+    move: {
+        textAlign:'center',
+    },
+
+    test: {
+        width: 100,
+        height: 100,
     }
 
 });
