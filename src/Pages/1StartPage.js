@@ -8,7 +8,7 @@ export function StartPage(props) {
 
         // Generera en token här
 
-        fetch('http://localhost:8080/auth/token')
+        fetch(ADDRESS+ 'auth/token')
             .then(response => response.text())
             .then(token => {
                 props.setToken(token);

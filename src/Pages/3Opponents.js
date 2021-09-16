@@ -3,11 +3,22 @@ import { Text, TextInput, View, Button, StyleSheet} from "react-native";
 
 export function Opponents(props) {
 
-    const [games, setGames, startGames, setStartGames] = useState([]);
+    const [games, setGames] = useState([]);
 
-    useEffect(() => {
+    const startGame = () => {
+        fetch(ADDRESS + "games/start", {
+            method: 'GET',
+            headers: {
+                token: props.token
+            }
+        }).then(response => response.json())
+            .then(gameStatus => {
+                props.setView("StartGame")
+            });
+    }
 
-        fetch('http://localhost:8080/games', {
+    const fetchGames = () => {
+        fetch(ADDRESS + 'games', {
             headers: {
                 'token': props.token,
             },
@@ -16,45 +27,56 @@ export function Opponents(props) {
             .then(response => {
                 setGames (response)
             });
-    }, []);
+    };
+
+    useEffect(fetchGames, []);
 
 
 
- //    return <View style={styles.container2}>
- //
- //               <View>
- //                  <Text>Opponents</Text>
- //               </View>
- //
- //               <View>
- //                   {games.map(game => {
- //                      return <View key={game.id}>
- //
- //                        <Text>{game.playerName}</Text>
- //
- //                        <Button title={"Join"} onPress={ () => {
- //                            fetch('http://localhost:8080/games/start', {
- //                                headers: {
- //                                    'token': props.token,
- //                                },
- //                            })
- //                                .then(response => response.json())
- //                                .then(response => {
- //                                    setStartGames (response)
- //                                    props.setView("MakeMove")
- //                                });
- //                        });
- //
- //                  }
- //                            startGames.map(startGames => {
- //                                return
- //                                    <View key={startGames.id}>{MakeMove}</View>
- //                      }
- //                        }/>;
- //               </View>
- //               })}
- //            </View>
- // );
+    return (
+        <View style={styles.container2}>
+
+            <View>
+                <Button title={"StartGame"} onPress={startGame} />
+            </View>
+
+            <Text style={styles.opText}>Opponents</Text>
+            <Button title={"Refresh"} onPress={fetchGames} />
+            <View>
+
+                {
+                    games.map(game => {
+                        return (
+                            <View key={game.gameId}>
+                                <Text style={styles.plName}>{ game.playerName }</Text>
+                                <Button title={"Join"} onPress={() => {
+                                    fetch(ADDRESS+ 'games/join/' + game.gameId, {
+                                        headers: {
+                                            'token': props.token,
+                                        },
+                                    }).then(response => response.json())
+                                        .then(response => {
+                                            props.setView("MakeMove")
+                                        });
+                                }
+                                } />
+
+                                <Button title={"Remove"} onPress={() => {
+                                    fetch(ADDRESS+ 'games/join/' + game.gameId, {
+                                        headers: {
+                                            'token': props.token,
+                                        },
+                                    }).then(response => response.json()).then(fetchGames);
+                                }
+                                } />
+                            </View>
+                        );
+                    })
+                }
+
+            </View>
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({
@@ -68,7 +90,7 @@ container2: {
 },
 
     opText: {
-    paddingBottom: '50%'
+        paddingBottom: '10%'
     },
 
     plName: {

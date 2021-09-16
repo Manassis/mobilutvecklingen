@@ -10,7 +10,7 @@ export function MakeMove(props) {
     return (
         <View style={styles.container}>
             <View style={styles.box}>
-                <Text style={styles.move}>MAKE MOVE</Text>
+                <Text style={styles.move}>MAKE YOUR MOVE</Text>
             </View>
             <View>
                 { pick }

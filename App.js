@@ -22,6 +22,8 @@ export default function App() {
         display = <MakeMove setMove={setMove} token={token}/>;
     } else if (view === 'WinLoseDraw') {
         display = <WinLoseDraw setWinner={setWinner} token={token}/>;
+    } else if (view === 'StartGame') {
+        display = <StartGame setView={setView} token={token}/>;
     } else {
         return <View>Error</View>
     }
