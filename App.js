@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput} from 'react-native';
 import {StartPage} from "./src/Pages/1StartPage";
 
-export default function App() {
+export default function App () {
 
     const [view, setView] = useState('start');
     const [token, setToken] = useState('');
@@ -19,9 +19,7 @@ export default function App() {
     } else if (view === 'Opponents') {
         display = <Opponents setView={setView} token={token}/>;
     } else if (view === 'MakeMove') {
-        display = <MakeMove setMove={setMove} token={token}/>;
-    } else if (view === 'WinLoseDraw') {
-        display = <WinLoseDraw setWinner={setWinner} token={token}/>;
+        display = <MakeMove setMove={setMove} setView={setView} token={token}/>;
     } else if (view === 'StartGame') {
         display = <StartGame setView={setView} token={token}/>;
     } else {

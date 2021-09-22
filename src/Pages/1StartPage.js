@@ -4,9 +4,11 @@ import LogBoxInspectorFooter from "react-native/Libraries/LogBox/UI/LogBoxInspec
 
 export function StartPage(props) {
 
+    const [view, setView] = useState('');
+
     useEffect(() => {
 
-        // Generera en token här
+        // Generera en token här.
 
         fetch(ADDRESS+ 'auth/token')
             .then(response => response.text())

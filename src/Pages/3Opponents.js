@@ -36,12 +36,16 @@ export function Opponents(props) {
     return (
         <View style={styles.container2}>
 
-            <View>
+            <View style={styles.starta}>
                 <Button title={"StartGame"} onPress={startGame} />
             </View>
 
             <Text style={styles.opText}>Opponents</Text>
+
+            <View style={styles.refresha}>
             <Button title={"Refresh"} onPress={fetchGames} />
+            </View>
+
             <View>
 
                 {
@@ -60,7 +64,7 @@ export function Opponents(props) {
                                         });
                                 }
                                 } />
-
+                                <View style={styles.removes}>
                                 <Button title={"Remove"} onPress={() => {
                                     fetch(ADDRESS+ 'games/join/' + game.gameId, {
                                         headers: {
@@ -69,6 +73,7 @@ export function Opponents(props) {
                                     }).then(response => response.json()).then(fetchGames);
                                 }
                                 } />
+                                </View>
                             </View>
                         );
                     })
@@ -90,7 +95,7 @@ container2: {
 },
 
     opText: {
-        paddingBottom: '10%'
+        fontSize: 17
     },
 
     plName: {

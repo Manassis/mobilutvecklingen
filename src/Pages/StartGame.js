@@ -27,7 +27,7 @@ export function StartGame(props) {
 
     return (
         <View style={styles.container2}>
-            <Text>Waiting for your opponent</Text>
+            <Text>Wait for your opponent</Text>
 
         </View>
     );
