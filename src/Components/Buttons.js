@@ -1,11 +1,11 @@
 import React, { useState }from 'react';
 import {Button, Image, StyleSheet, Text, View} from "react-native";
 
-export function Button() {
-    return (
-        <View>
+// onClick, text
 
-        </View>
+export function CustomButton(props) {
+    return (
+        <Button style={styles.custombutton1} onPress={props.onClick} title={props.text}></Button>
     );
 }
 const styles = StyleSheet.create({

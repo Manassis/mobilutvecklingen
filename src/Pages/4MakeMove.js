@@ -1,5 +1,10 @@
-import React, { useState }from 'react';
-import {Button, Image, Text, View} from "react-native";
+import React, {useRef, useState} from 'react'
+import {Button, Image, StyleSheet, Text, View} from "react-native";
+import {ADDRESS} from "../service";
+
+const ROCK_IMAGE = require('../Pictures/Rock.png');
+const SCISSORS_IMAGE = require('../Pictures/Sciccor.png');
+const PAPER_IMAGE = require('../Pictures/Bag.png');
 
 
 export function MakeMove(props) {
@@ -80,7 +85,21 @@ export function MakeMove(props) {
         <View style={styles.container}>
 
             <View style={styles.box}>
-                <Text style={styles.move}>MAKE YOUR MOVE</Text>
+                {
+                    function() {
+                        if (gameStatus === null) {
+                            if (hasPicked) return (<Text style={styles.move}>WAITING</Text>);
+                            else return (<Text style={styles.move}>MAKE YOUR MOVE</Text>);
+                        }
+                        else if (gameStatus.status === 'WIN') return (<Text style={styles.move}>YOU WIN</Text>);
+                        else if (gameStatus.status === 'LOSE') return (<Text style={styles.move}>YOU LOSE</Text>);
+                        else if (gameStatus.status === 'DRAW') return (<Text style={styles.move}>YOU DRAW</Text>);
+                        else {
+                            if (hasPicked) return (<Text style={styles.move}>WAITING</Text>);
+                            else return (<Text style={styles.move}>MAKE YOUR MOVE</Text>);
+                        }
+                    }()
+                }
             </View>
 
             <View style={styles.moves}>
@@ -109,18 +128,28 @@ export function MakeMove(props) {
                             </View>
                         </View>
 
-                    <View>
-                        <Image style={styles.picture1} source={require('../Pictures/Sciccor.png')}/>
-                        <Button title={"Choose"} onPress={() => makeMove("SCISSORS")} />
+                        <View style={styles.buttonContainer}>
+                            <View>
+                                <Image style={styles.picture1} source={require('../Pictures/Sciccor.png')}/>
+                            </View>
+                            <View>
+                                <Button title={"Choose"} onPress={() => makeMove("SCISSORS")}/>
+                            </View>
+                        </View>
+
+                        <View style={styles.buttonContainer}>
+                            <View>
+                                <Image style={styles.picture1} source={require('../Pictures/Bag.png')}/>
+                            </View>
+                            <View>
+                                <Button title={"Choose"} onPress={() => makeMove("PAPER")}/>
+                            </View>
+                        </View>
                     </View>
 
-                    <View>
-                        <Image style={styles.picture1} source={require('../Pictures/Bag.png')}/>
-                        <Button title={"Choose"} onPress={() => makeMove("PAPER")} />
-                    </View>
                 </View>
-
-            </View>
+                )
+            }
 
             <View style={styles.box}>
                 <Button title={"Play Again"} onPress={() => props.setView("playerName")}/>
@@ -140,6 +169,7 @@ const styles = StyleSheet.create({
     pictureView: {
         display: 'flex',
         flexDirection: 'row',
+        justifyContent: 'center',
     },
 
     picture1: {
@@ -161,7 +191,8 @@ const styles = StyleSheet.create({
     },
 
     picButton: {
-        alignContent: 'center'
+        // alignContent: 'center',
+        // margin: 'auto',
     },
 
     box: {
@@ -175,9 +206,12 @@ const styles = StyleSheet.create({
         fontSize: 17
     },
 
-    test: {
-        width: 100,
-        height: 100,
+    buttonContainer: {
+        // width: 150,
+        // height: 150,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
     }
 
 });

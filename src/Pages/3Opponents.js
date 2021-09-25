@@ -1,5 +1,8 @@
 import React, {useEffect, useState }from 'react';
 import { Text, TextInput, View, Button, StyleSheet} from "react-native";
+import {ADDRESS} from "../service";
+import {StartGame} from "./StartGame";
+
 
 export function Opponents(props) {
 
@@ -85,21 +88,35 @@ export function Opponents(props) {
 }
 
 const styles = StyleSheet.create({
-container2: {
-    width: '100%',
-    height: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'lightyellow'
+    container2: {
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'lightyellow'
+    },
+
+    refresha: {
+       marginBottom: '5%'
 },
+
+    starta: {
+      height: 150,
+    },
+
+    removes: {
+        marginTop: '20%'
+    },
 
     opText: {
         fontSize: 17
     },
 
     plName: {
-    paddingBottom: '10%'
+        paddingLeft: 18,
+        paddingTop: '30%'
+
     }
 
 });

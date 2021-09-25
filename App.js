@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput} from 'react-native';
 import {StartPage} from "./src/Pages/1StartPage";
+import {PlayerName} from "./src/Pages/2PlayerName";
+import {MakeMove} from "./src/Pages/4MakeMove";
+import {Opponents} from "./src/Pages/3Opponents";
+import {StartGame} from "./src/Pages/StartGame";
 
 export default function App () {
 
@@ -28,7 +32,6 @@ export default function App () {
 
     return (
       <View style={styles.box}>
-          <Text style={styles.test}>{token}</Text>
           {display}
       </View>
     );
@@ -42,10 +45,21 @@ const testStyle = StyleSheet.create({
 });
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'lightyellow',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
+    container: {
+        flex: 1,
+        backgroundColor: 'lightyellow',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+
+    box: {
+        width: '100%',
+        height: '100%',
+    },
+
+    test: {
+        position: 'absolute',
+        top: '40%',
+        left: '30%'
+    }
 });
